@@ -32,6 +32,7 @@ Partial Class Form1
         Me.But_1 = New System.Windows.Forms.Button()
         Me.Label_timer = New System.Windows.Forms.Label()
         Me.But_30s = New System.Windows.Forms.Button()
+        Me.But_drop = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Timer1
@@ -39,7 +40,7 @@ Partial Class Form1
         '
         'But_play
         '
-        Me.But_play.Location = New System.Drawing.Point(143, 77)
+        Me.But_play.Location = New System.Drawing.Point(143, 48)
         Me.But_play.Name = "But_play"
         Me.But_play.Size = New System.Drawing.Size(45, 23)
         Me.But_play.TabIndex = 1
@@ -48,7 +49,7 @@ Partial Class Form1
         '
         'But_reset
         '
-        Me.But_reset.Location = New System.Drawing.Point(143, 106)
+        Me.But_reset.Location = New System.Drawing.Point(143, 77)
         Me.But_reset.Name = "But_reset"
         Me.But_reset.Size = New System.Drawing.Size(45, 23)
         Me.But_reset.TabIndex = 2
@@ -101,12 +102,22 @@ Partial Class Form1
         Me.But_30s.Text = "+30s"
         Me.But_30s.UseVisualStyleBackColor = True
         '
+        'But_drop
+        '
+        Me.But_drop.Location = New System.Drawing.Point(143, 106)
+        Me.But_drop.Name = "But_drop"
+        Me.But_drop.Size = New System.Drawing.Size(45, 23)
+        Me.But_drop.TabIndex = 9
+        Me.But_drop.Text = "drop"
+        Me.But_drop.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(200, 141)
+        Me.Controls.Add(Me.But_drop)
         Me.Controls.Add(Me.But_30s)
         Me.Controls.Add(Me.Label_timer)
         Me.Controls.Add(Me.But_10)
@@ -133,4 +144,5 @@ Partial Class Form1
     Friend WithEvents But_1 As Button
     Friend WithEvents Label_timer As Label
     Friend WithEvents But_30s As Button
+    Friend WithEvents But_drop As Button
 End Class

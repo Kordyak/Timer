@@ -6,6 +6,8 @@ Public Class Form1
 
     Private remaining_seconds As Integer
 
+    Private specified_seconds As Integer
+
 
 
 
@@ -32,8 +34,15 @@ Public Class Form1
             Case Keys.P
                 Play_pause()
 
-            Case Keys.Escape
+
+            Case Keys.R
                 Reset()
+
+            Case Keys.Escape, Keys.D
+                Drop()
+
+            Case Keys.D1, Keys.NumPad1
+                But_1m_Click()
 
         End Select
 
@@ -51,6 +60,8 @@ Public Class Form1
 
         Else
             If remaining_seconds <= 0 Then
+
+
                 If remaining_seconds > 0 Then
                     Update_timer(0)
                 Else
@@ -59,6 +70,7 @@ Public Class Form1
                 End If
             End If
 
+            specified_seconds = remaining_seconds
             Timer1.Start()
             Me.BackColor = Color.Green
             But_play.Text = "pause"
@@ -71,11 +83,24 @@ Public Class Form1
     'RESET
     Private Sub Reset() Handles But_reset.Click
 
+        Timer1.Stop()
+        But_play.Text = "play"
+        Me.BackColor = SystemColors.Control
+
+        remaining_seconds = specified_seconds
+        Update_timer(0)
+
+    End Sub
+
+
+    'DROP
+    Private Sub Drop() Handles But_drop.Click
+
         But_play.Text = "play"
         Timer1.Stop()
         Me.BackColor = SystemColors.Control
         remaining_seconds = 0
-        Update_timer(0)
+        Update_timer(remaining_seconds)
 
     End Sub
 
@@ -83,11 +108,11 @@ Public Class Form1
 
 
     'Добавляем время
-    Private Sub But_30s_Click(sender As Object, e As EventArgs) Handles But_30s.Click
+    Private Sub But_30s_Click() Handles But_30s.Click
         Update_timer(30)
     End Sub
 
-    Private Sub But_1m_Click(sender As Object, e As EventArgs) Handles But_1.Click
+    Private Sub But_1m_Click() Handles But_1.Click
         Update_timer(60)
     End Sub
 
@@ -149,4 +174,7 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Reset(sender As Object, e As EventArgs) Handles But_reset.Click
+
+    End Sub
 End Class

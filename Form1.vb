@@ -41,8 +41,17 @@ Public Class Form1
             Case Keys.Escape, Keys.D
                 Drop()
 
+            Case Keys.D3, Keys.NumPad3
+                But_30s_Click()
+
             Case Keys.D1, Keys.NumPad1
                 But_1m_Click()
+
+            Case Keys.D5, Keys.NumPad5
+                But_5m_Click()
+
+            Case Keys.D0, Keys.NumPad0
+                But_10m_Click()
 
         End Select
 
@@ -117,11 +126,11 @@ Public Class Form1
         Update_timer(60, True)
     End Sub
 
-    Private Sub But_5m_Click(sender As Object, e As EventArgs) Handles But_5.Click
+    Private Sub But_5m_Click() Handles But_5.Click
         Update_timer(300, True)
     End Sub
 
-    Private Sub But_10m_Click(sender As Object, e As EventArgs) Handles But_10.Click
+    Private Sub But_10m_Click() Handles But_10.Click
         Update_timer(600, True)
     End Sub
 

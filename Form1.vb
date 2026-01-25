@@ -83,19 +83,19 @@ Public Class Form1
 
 
     'Добавляем время
-    Private Sub But_1s_Click(sender As Object, e As EventArgs) Handles But_1s.Click
-        Update_timer(1)
+    Private Sub But_30s_Click(sender As Object, e As EventArgs) Handles But_30s.Click
+        Update_timer(30)
     End Sub
 
-    Private Sub But_plus1m_Click(sender As Object, e As EventArgs) Handles But_1.Click
+    Private Sub But_1m_Click(sender As Object, e As EventArgs) Handles But_1.Click
         Update_timer(60)
     End Sub
 
-    Private Sub But_plus5m_Click(sender As Object, e As EventArgs) Handles But_5.Click
+    Private Sub But_5m_Click(sender As Object, e As EventArgs) Handles But_5.Click
         Update_timer(300)
     End Sub
 
-    Private Sub But_plus10m_Click(sender As Object, e As EventArgs) Handles But_10.Click
+    Private Sub But_10m_Click(sender As Object, e As EventArgs) Handles But_10.Click
         Update_timer(600)
     End Sub
 

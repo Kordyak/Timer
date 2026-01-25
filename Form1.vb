@@ -56,7 +56,7 @@ Public Class Form1
 
             Timer1.Stop()
             But_play.Text = "play"
-            Me.BackColor = SystemColors.Control
+            Me.BackColor = Color.Yellow
 
         Else
             If remaining_seconds <= 0 Then
@@ -70,7 +70,6 @@ Public Class Form1
                 End If
             End If
 
-            specified_seconds = remaining_seconds
             Timer1.Start()
             Me.BackColor = Color.Green
             But_play.Text = "pause"
@@ -99,8 +98,10 @@ Public Class Form1
         But_play.Text = "play"
         Timer1.Stop()
         Me.BackColor = SystemColors.Control
+
+        specified_seconds = 0
         remaining_seconds = 0
-        Update_timer(remaining_seconds)
+        Update_timer(0)
 
     End Sub
 
@@ -109,19 +110,19 @@ Public Class Form1
 
     'Добавляем время
     Private Sub But_30s_Click() Handles But_30s.Click
-        Update_timer(30)
+        Update_timer(30, True)
     End Sub
 
     Private Sub But_1m_Click() Handles But_1.Click
-        Update_timer(60)
+        Update_timer(60, True)
     End Sub
 
     Private Sub But_5m_Click(sender As Object, e As EventArgs) Handles But_5.Click
-        Update_timer(300)
+        Update_timer(300, True)
     End Sub
 
     Private Sub But_10m_Click(sender As Object, e As EventArgs) Handles But_10.Click
-        Update_timer(600)
+        Update_timer(600, True)
     End Sub
 
 
@@ -130,7 +131,12 @@ Public Class Form1
 
 
     'Обновление таймера
-    Private Sub Update_timer(second As Integer)
+    Private Sub Update_timer(second As Integer, Optional is_start As Boolean = False)
+
+        If is_start Then
+            specified_seconds += second
+        End If
+
         remaining_seconds += second
         Dim minutes As Integer = remaining_seconds \ 60
         Dim seconds As Integer = remaining_seconds Mod 60

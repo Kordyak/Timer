@@ -40,18 +40,18 @@ Partial Class Form1
         '
         'But_play
         '
-        Me.But_play.Location = New System.Drawing.Point(143, 48)
+        Me.But_play.Location = New System.Drawing.Point(155, 34)
         Me.But_play.Name = "But_play"
-        Me.But_play.Size = New System.Drawing.Size(45, 23)
+        Me.But_play.Size = New System.Drawing.Size(50, 50)
         Me.But_play.TabIndex = 1
         Me.But_play.Text = "play"
         Me.But_play.UseVisualStyleBackColor = True
         '
         'But_reset
         '
-        Me.But_reset.Location = New System.Drawing.Point(143, 77)
+        Me.But_reset.Location = New System.Drawing.Point(211, 34)
         Me.But_reset.Name = "But_reset"
-        Me.But_reset.Size = New System.Drawing.Size(45, 23)
+        Me.But_reset.Size = New System.Drawing.Size(50, 50)
         Me.But_reset.TabIndex = 2
         Me.But_reset.Text = "reset"
         Me.But_reset.UseVisualStyleBackColor = True
@@ -104,9 +104,9 @@ Partial Class Form1
         '
         'But_drop
         '
-        Me.But_drop.Location = New System.Drawing.Point(143, 106)
+        Me.But_drop.Location = New System.Drawing.Point(155, 90)
         Me.But_drop.Name = "But_drop"
-        Me.But_drop.Size = New System.Drawing.Size(45, 23)
+        Me.But_drop.Size = New System.Drawing.Size(50, 50)
         Me.But_drop.TabIndex = 9
         Me.But_drop.Text = "drop"
         Me.But_drop.UseVisualStyleBackColor = True
@@ -116,7 +116,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(200, 141)
+        Me.ClientSize = New System.Drawing.Size(269, 150)
         Me.Controls.Add(Me.But_drop)
         Me.Controls.Add(Me.But_30s)
         Me.Controls.Add(Me.Label_timer)

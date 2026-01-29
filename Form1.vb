@@ -176,6 +176,10 @@ Public Class Form1
                         Console.Beep()
                         Threading.Thread.Sleep(1000)
 
+                        Me.Invoke(Sub()
+                                      MakeWindowActive()
+                                  End Sub)
+
                         If But_play.Text = "play" Then
                             Me.BackColor = SystemColors.Control
                             Exit While
@@ -189,7 +193,15 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Reset(sender As Object, e As EventArgs) Handles But_reset.Click
+    Public Sub MakeWindowActive()
+        If Me.WindowState = FormWindowState.Minimized Then
+            Me.WindowState = FormWindowState.Normal
+        End If
 
+        Me.TopMost = True
+        Me.Activate()
+        Me.Focus()
+        Me.TopMost = False
     End Sub
+
 End Class

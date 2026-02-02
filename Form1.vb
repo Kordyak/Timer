@@ -53,6 +53,13 @@ Public Class Form1
             Case Keys.D0, Keys.NumPad0
                 But_10m_Click()
 
+            Case Keys.H
+                If Check_hibernate.Checked Then
+                    Check_hibernate.Checked = False
+                Else
+                    Check_hibernate.Checked = True
+                End If
+
         End Select
 
     End Sub
@@ -170,6 +177,11 @@ Public Class Form1
             Me.BackColor = Color.Red
             Timer1.Stop()
 
+            If Check_hibernate.Checked Then
+                Process.Start("shutdown", "/h")
+                Exit Sub
+            End If
+
             Task.Run(
                 Sub()
                     While True
@@ -190,7 +202,7 @@ Public Class Form1
                 End Sub
             )
 
-        End If
+            End If
     End Sub
 
     Public Sub MakeWindowActive()

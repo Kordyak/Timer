@@ -34,6 +34,10 @@ Partial Class Form1
         Me.But_30s = New System.Windows.Forms.Button()
         Me.But_drop = New System.Windows.Forms.Button()
         Me.Check_hibernate = New System.Windows.Forms.CheckBox()
+        Me.But_30s_ = New System.Windows.Forms.Button()
+        Me.But_10_ = New System.Windows.Forms.Button()
+        Me.But_5_ = New System.Windows.Forms.Button()
+        Me.But_1_ = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Timer1
@@ -61,7 +65,7 @@ Partial Class Form1
         '
         'But_10
         '
-        Me.But_10.Location = New System.Drawing.Point(18, 163)
+        Me.But_10.Location = New System.Drawing.Point(22, 197)
         Me.But_10.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.But_10.Name = "But_10"
         Me.But_10.Size = New System.Drawing.Size(68, 35)
@@ -71,7 +75,7 @@ Partial Class Form1
         '
         'But_5
         '
-        Me.But_5.Location = New System.Drawing.Point(18, 118)
+        Me.But_5.Location = New System.Drawing.Point(22, 152)
         Me.But_5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.But_5.Name = "But_5"
         Me.But_5.Size = New System.Drawing.Size(68, 35)
@@ -81,7 +85,7 @@ Partial Class Form1
         '
         'But_1
         '
-        Me.But_1.Location = New System.Drawing.Point(18, 74)
+        Me.But_1.Location = New System.Drawing.Point(22, 108)
         Me.But_1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.But_1.Name = "But_1"
         Me.But_1.Size = New System.Drawing.Size(68, 35)
@@ -102,7 +106,7 @@ Partial Class Form1
         '
         'But_30s
         '
-        Me.But_30s.Location = New System.Drawing.Point(94, 74)
+        Me.But_30s.Location = New System.Drawing.Point(22, 63)
         Me.But_30s.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.But_30s.Name = "But_30s"
         Me.But_30s.Size = New System.Drawing.Size(68, 35)
@@ -130,12 +134,56 @@ Partial Class Form1
         Me.Check_hibernate.Text = "Hibernate PC"
         Me.Check_hibernate.UseVisualStyleBackColor = True
         '
+        'But_30s_
+        '
+        Me.But_30s_.Location = New System.Drawing.Point(98, 63)
+        Me.But_30s_.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.But_30s_.Name = "But_30s_"
+        Me.But_30s_.Size = New System.Drawing.Size(68, 35)
+        Me.But_30s_.TabIndex = 14
+        Me.But_30s_.Text = "-30s"
+        Me.But_30s_.UseVisualStyleBackColor = True
+        '
+        'But_10_
+        '
+        Me.But_10_.Location = New System.Drawing.Point(98, 197)
+        Me.But_10_.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.But_10_.Name = "But_10_"
+        Me.But_10_.Size = New System.Drawing.Size(68, 35)
+        Me.But_10_.TabIndex = 13
+        Me.But_10_.Text = "-10m"
+        Me.But_10_.UseVisualStyleBackColor = True
+        '
+        'But_5_
+        '
+        Me.But_5_.Location = New System.Drawing.Point(98, 152)
+        Me.But_5_.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.But_5_.Name = "But_5_"
+        Me.But_5_.Size = New System.Drawing.Size(68, 35)
+        Me.But_5_.TabIndex = 12
+        Me.But_5_.Text = "-5m"
+        Me.But_5_.UseVisualStyleBackColor = True
+        '
+        'But_1_
+        '
+        Me.But_1_.Location = New System.Drawing.Point(98, 108)
+        Me.But_1_.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.But_1_.Name = "But_1_"
+        Me.But_1_.Size = New System.Drawing.Size(68, 35)
+        Me.But_1_.TabIndex = 11
+        Me.But_1_.Text = "-1m"
+        Me.But_1_.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(404, 265)
+        Me.Controls.Add(Me.But_30s_)
+        Me.Controls.Add(Me.But_10_)
+        Me.Controls.Add(Me.But_5_)
+        Me.Controls.Add(Me.But_1_)
         Me.Controls.Add(Me.Check_hibernate)
         Me.Controls.Add(Me.But_drop)
         Me.Controls.Add(Me.But_30s)
@@ -167,4 +215,8 @@ Partial Class Form1
     Friend WithEvents But_30s As Button
     Friend WithEvents But_drop As Button
     Friend WithEvents Check_hibernate As CheckBox
+    Friend WithEvents But_30s_ As Button
+    Friend WithEvents But_10_ As Button
+    Friend WithEvents But_5_ As Button
+    Friend WithEvents But_1_ As Button
 End Class

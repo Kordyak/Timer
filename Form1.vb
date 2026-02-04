@@ -141,6 +141,23 @@ Public Class Form1
         Update_timer(600, True)
     End Sub
 
+    'Удаляем время
+    Private Sub minus_30s() Handles But_30s_.Click
+        Update_timer(-30, True)
+    End Sub
+
+    Private Sub minus_1m_() Handles But_1_.Click
+        Update_timer(-60, True)
+    End Sub
+
+    Private Sub minus_5m_() Handles But_5_.Click
+        Update_timer(-300, True)
+    End Sub
+
+    Private Sub minus_10m_() Handles But_10_.Click
+        Update_timer(-600, True)
+    End Sub
+
 
 
 
@@ -216,4 +233,19 @@ Public Class Form1
         Me.TopMost = False
     End Sub
 
+    Private Sub But_30s_Click(sender As Object, e As EventArgs) Handles But_30s.Click
+
+    End Sub
+
+    Private Sub But_10m_Click(sender As Object, e As EventArgs) Handles But_10.Click
+
+    End Sub
+
+    Private Sub But_5m_Click(sender As Object, e As EventArgs) Handles But_5.Click
+
+    End Sub
+
+    Private Sub But_1m_Click(sender As Object, e As EventArgs) Handles But_1.Click
+
+    End Sub
 End Class

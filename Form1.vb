@@ -8,6 +8,8 @@ Public Class Form1
 
     Private specified_seconds As Integer
 
+    Private is_alarm_stop As Boolean
+
 
 
 
@@ -36,7 +38,7 @@ Public Class Form1
 
 
             Case Keys.R
-                Reset()
+                Replay()
 
             Case Keys.Escape, Keys.D
                 Drop()
@@ -75,17 +77,7 @@ Public Class Form1
             Me.BackColor = Color.Yellow
 
         Else
-            If remaining_seconds <= 0 Then
-
-
-                If remaining_seconds > 0 Then
-                    Update_timer(0)
-                Else
-                    'MessageBox.Show("Введите корректное время!")
-                    Return
-                End If
-            End If
-
+            Update_timer(0)
             Timer1.Start()
             Me.BackColor = Color.Green
             But_play.Text = "pause"
@@ -95,15 +87,18 @@ Public Class Form1
 
 
 
-    'RESET
-    Private Sub Reset() Handles But_reset.Click
+    'Replay
+    Private Sub Replay() Handles But_replay.Click
 
-        Timer1.Stop()
-        But_play.Text = "play"
-        Me.BackColor = SystemColors.Control
+        is_alarm_stop = True
 
-        remaining_seconds = specified_seconds
-        Update_timer(0)
+        'But_play.Text = "play"
+        'remaining_seconds = specified_seconds
+        'Play_pause()
+
+        'Timer1.Stop()
+        'Me.BackColor = SystemColors.Control
+        'Update_timer(0)
 
     End Sub
 
@@ -185,7 +180,7 @@ Public Class Form1
 
 
     'ТИК ТАК
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Async Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
         Update_timer(-1)
 
@@ -199,27 +194,35 @@ Public Class Form1
                 Exit Sub
             End If
 
-            Task.Run(
-                Sub()
-                    While True
-                        Console.Beep()
-                        Threading.Thread.Sleep(1000)
+            Dim result = Await Task.Run(
+                                Function()
+                                    While True
+                                        Console.Beep()
+                                        Threading.Thread.Sleep(1000)
 
-                        Me.Invoke(Sub()
-                                      MakeWindowActive()
-                                  End Sub)
+                                        Me.Invoke(Sub()
+                                                      MakeWindowActive()
+                                                  End Sub)
 
-                        If But_play.Text = "play" Then
-                            Me.BackColor = SystemColors.Control
-                            Exit While
-                        End If
+                                        If But_play.Text = "play" Then
+                                            Me.BackColor = SystemColors.Control
+                                            Exit While
 
-                        Update_timer(-1)
-                    End While
-                End Sub
+                                        ElseIf remaining_seconds > 0 Or is_alarm_stop Then
+                                            is_alarm_stop = False
+                                            Return "play"
+                                        End If
+
+                                        Update_timer(-1)
+                                    End While
+                                End Function
             )
 
+            If result = "play" Then
+                But_play.Text = "play"
+                Play_pause()
             End If
+        End If
     End Sub
 
     Public Sub MakeWindowActive()

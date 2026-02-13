@@ -69,17 +69,19 @@ Public Class Form1
     'PLAY / PAUSE
     Private Sub Play_pause() Handles But_play.Click
 
-        If But_play.Text = "pause" Then
+        If specified_seconds = 0 Then
+            Exit Sub
+
+        ElseIf But_play.Text = "Pause" Then
             Timer1.Stop()
-            But_play.Text = "play"
+            But_play.Text = "Play"
             Me.BackColor = Color.Yellow
 
-        Else
+        ElseIf But_play.Text = "Play" Then
             'Update_timer(0)
             Timer1.Start()
-            But_play.Text = "pause"
+            But_play.Text = "Pause"
             Me.BackColor = Color.Green
-
         End If
     End Sub
 
@@ -104,7 +106,7 @@ Public Class Form1
     'DROP
     Private Sub Drop() Handles But_drop.Click
 
-        But_play.Text = "play"
+        But_play.Text = "Play"
         Timer1.Stop()
         Me.BackColor = SystemColors.Control
 
@@ -193,8 +195,6 @@ Public Class Form1
                 Exit Sub
             End If
 
-
-
             Dim result = Await Task.Run(
                                 Function()
                                     While True
@@ -205,22 +205,21 @@ Public Class Form1
                                                       MakeWindowActive()
                                                   End Sub)
 
-                                        If But_play.Text = "play" Then
-                                            Me.BackColor = SystemColors.Control
+                                        If But_play.Text = "Play" Then
                                             Exit While
 
                                         ElseIf remaining_seconds > 0 Or is_alarm_stop Then
                                             is_alarm_stop = False
-                                            Return "play"
+                                            Return "Play"
                                         End If
+                                        Update_timer(-1)
 
                                     End While
-                                    Update_timer(-1)
                                 End Function
             )
 
-            If result = "play" Then
-                But_play.Text = "play"
+            If result = "Play" Then
+                But_play.Text = "Play"
                 Play_pause()
             End If
         End If

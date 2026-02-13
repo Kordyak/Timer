@@ -36,7 +36,6 @@ Public Class Form1
             Case Keys.P
                 Play_pause()
 
-
             Case Keys.R
                 Replay()
 
@@ -71,16 +70,15 @@ Public Class Form1
     Private Sub Play_pause() Handles But_play.Click
 
         If But_play.Text = "pause" Then
-
             Timer1.Stop()
             But_play.Text = "play"
             Me.BackColor = Color.Yellow
 
         Else
-            Update_timer(0)
+            'Update_timer(0)
             Timer1.Start()
-            Me.BackColor = Color.Green
             But_play.Text = "pause"
+            Me.BackColor = Color.Green
 
         End If
     End Sub
@@ -90,10 +88,10 @@ Public Class Form1
     'Replay
     Private Sub Replay() Handles But_replay.Click
 
+        remaining_seconds = specified_seconds
         is_alarm_stop = True
 
         'But_play.Text = "play"
-        'remaining_seconds = specified_seconds
         'Play_pause()
 
         'Timer1.Stop()
@@ -179,6 +177,7 @@ Public Class Form1
 
 
 
+
     'ТИК ТАК
     Private Async Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
@@ -193,6 +192,8 @@ Public Class Form1
                 Process.Start("shutdown", "/h")
                 Exit Sub
             End If
+
+
 
             Dim result = Await Task.Run(
                                 Function()
@@ -213,8 +214,8 @@ Public Class Form1
                                             Return "play"
                                         End If
 
-                                        Update_timer(-1)
                                     End While
+                                    Update_timer(-1)
                                 End Function
             )
 

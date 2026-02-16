@@ -1,5 +1,6 @@
-﻿Imports System.Windows.Forms
-Imports System.Media
+﻿Imports System.Media
+Imports System.Runtime.InteropServices
+Imports System.Windows.Forms
 
 Public Class Form1
 
@@ -226,14 +227,19 @@ Public Class Form1
         End If
     End Sub
 
+
+
+    <DllImport("user32.dll")>
+    Private Shared Function SetForegroundWindow(hWnd As IntPtr) As Boolean
+    End Function
+
     Public Sub MakeWindowActive()
         If Me.WindowState = FormWindowState.Minimized Then
             Me.WindowState = FormWindowState.Normal
         End If
 
         Me.TopMost = True
-        Me.Activate()
-        Me.Focus()
+        SetForegroundWindow(Me.Handle)
         Me.TopMost = False
     End Sub
 

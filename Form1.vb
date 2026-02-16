@@ -12,6 +12,10 @@ Public Class Form1
 
 
 
+    Public Declare Function ShowWindow Lib "user32.dll" (ByVal hwnd As Integer, ByVal nCmdShow As Integer) As Integer
+
+
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -23,6 +27,8 @@ Public Class Form1
         Me.KeyPreview = True
 
     End Sub
+
+
 
 
 
@@ -227,13 +233,24 @@ Public Class Form1
     End Sub
 
     Public Sub MakeWindowActive()
-        If Me.WindowState = FormWindowState.Minimized Then
-            Me.WindowState = FormWindowState.Normal
-        End If
+
+        Me.Focus()
+
+        'Dim timer_process = Process.GetProcessesByName("timer")(0)
+        'Dim timer_window As Int32
+        'timer_window = timer_process.MainWindowHandle.ToInt32
+        'ShowWindow(timer_window, 1) ' Активирует и отображает окно. Если окно свернуто, развернуто или упорядочено, система восстанавливает его исходный размер и положение. 
+
+        'If Me.WindowState = FormWindowState.Minimized Then
+        '    Me.WindowState = FormWindowState.Normal
+        'End If
+
+        Me.WindowState = FormWindowState.Minimized
+        Me.WindowState = FormWindowState.Normal
+
 
         Me.TopMost = True
         Me.Activate()
-        Me.Focus()
         Me.TopMost = False
     End Sub
 

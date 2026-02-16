@@ -8,7 +8,7 @@ Public Class Form1
 
     Private specified_seconds As Integer
 
-    Private is_alarm_stop As Boolean
+    Private alarm_stop As Boolean
 
 
 
@@ -91,7 +91,7 @@ Public Class Form1
     Private Sub Replay() Handles But_replay.Click
 
         remaining_seconds = specified_seconds
-        is_alarm_stop = True
+        alarm_stop = True
 
         'But_play.Text = "play"
         'Play_pause()
@@ -192,6 +192,7 @@ Public Class Form1
 
             If Check_hibernate.Checked Then
                 Process.Start("shutdown", "/h")
+                Play_pause()
                 Exit Sub
             End If
 
@@ -208,8 +209,8 @@ Public Class Form1
                                         If But_play.Text = "Play" Then
                                             Exit While
 
-                                        ElseIf remaining_seconds > 0 Or is_alarm_stop Then
-                                            is_alarm_stop = False
+                                        ElseIf remaining_seconds > 0 Or alarm_stop Then
+                                            alarm_stop = False
                                             Return "Play"
                                         End If
                                         Update_timer(-1)
@@ -236,19 +237,5 @@ Public Class Form1
         Me.TopMost = False
     End Sub
 
-    Private Sub But_30s_Click(sender As Object, e As EventArgs) Handles But_30s.Click
 
-    End Sub
-
-    Private Sub But_10m_Click(sender As Object, e As EventArgs) Handles But_10.Click
-
-    End Sub
-
-    Private Sub But_5m_Click(sender As Object, e As EventArgs) Handles But_5.Click
-
-    End Sub
-
-    Private Sub But_1m_Click(sender As Object, e As EventArgs) Handles But_1.Click
-
-    End Sub
 End Class

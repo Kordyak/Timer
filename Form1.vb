@@ -1,5 +1,6 @@
-﻿Imports System.Windows.Forms
-Imports System.Media
+﻿Imports System.Media
+Imports System.Runtime.InteropServices
+Imports System.Windows.Forms
 
 Public Class Form1
 
@@ -84,7 +85,6 @@ Public Class Form1
             Me.BackColor = Color.Yellow
 
         ElseIf But_play.Text = "Play" Then
-            'Update_timer(0)
             Timer1.Start()
             But_play.Text = "Pause"
             Me.BackColor = Color.Green
@@ -95,17 +95,8 @@ Public Class Form1
 
     'Replay
     Private Sub Replay() Handles But_replay.Click
-
         remaining_seconds = specified_seconds
         alarm_stop = True
-
-        'But_play.Text = "play"
-        'Play_pause()
-
-        'Timer1.Stop()
-        'Me.BackColor = SystemColors.Control
-        'Update_timer(0)
-
     End Sub
 
 
@@ -141,6 +132,9 @@ Public Class Form1
     Private Sub But_10m_Click() Handles But_10.Click
         Update_timer(600, True)
     End Sub
+
+
+
 
     'Удаляем время
     Private Sub minus_30s() Handles But_30s_.Click
@@ -203,27 +197,28 @@ Public Class Form1
             End If
 
             Dim result = Await Task.Run(
-                                Function()
-                                    While True
-                                        Console.Beep()
-                                        Threading.Thread.Sleep(1000)
+                Function()
+                    While True
 
-                                        Me.Invoke(Sub()
-                                                      MakeWindowActive()
-                                                  End Sub)
+                        Console.Beep()
+                        Threading.Thread.Sleep(1000)
 
-                                        If But_play.Text = "Play" Then
-                                            Exit While
+                        Me.Invoke(Sub()
+                                      MakeWindowActive()
+                                  End Sub)
 
-                                        ElseIf remaining_seconds > 0 Or alarm_stop Then
-                                            alarm_stop = False
-                                            Return "Play"
-                                        End If
-                                        Update_timer(-1)
+                        If But_play.Text = "Play" Then
+                            Return Nothing
 
-                                    End While
-                                End Function
-            )
+                        ElseIf remaining_seconds > 0 Or alarm_stop Then
+                            alarm_stop = False
+                            Return "Play"
+                        End If
+
+                        Update_timer(-1)
+
+                    End While
+                End Function)
 
             If result = "Play" Then
                 But_play.Text = "Play"
@@ -231,6 +226,13 @@ Public Class Form1
             End If
         End If
     End Sub
+
+
+
+
+    <DllImport("user32.dll")>
+    Private Shared Function SetForegroundWindow(hWnd As IntPtr) As Boolean
+    End Function
 
     Public Sub MakeWindowActive()
 

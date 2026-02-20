@@ -191,6 +191,7 @@ Public Class Form1
             Timer1.Stop()
 
             If Check_hibernate.Checked Then
+                Check_hibernate.Checked = False
                 Process.Start("shutdown", "/h")
                 Play_pause()
                 Exit Sub

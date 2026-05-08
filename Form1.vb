@@ -97,6 +97,10 @@ Public Class Form1
     Private Sub Replay() Handles But_replay.Click
         remaining_seconds = specified_seconds
         alarm_stop = True
+
+        Timer1.Start()
+        But_play.Text = "Pause"
+        Me.BackColor = Color.Green
     End Sub
 
 
